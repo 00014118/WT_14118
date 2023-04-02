@@ -25,19 +25,41 @@ a:hover {
 }
 
 .navbar {
-    max-width: 1000px;
-    margin:30px auto;
+    height: 70px;
+    margin:0 0;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    border-bottom: 1px dotted #ccc;
-    padding: 10px;
+    padding:0 50px;
+    background-color:hsl(209, 94%, 68%);
+    color:#fff
+}
+.navbar h1 {
+    margin-left: 10vw;  
+    height: 70px;
+   
 }
 
+.navbar h1:hover{
+    color: hsl(209, 94%, 68%);
+    background-color: #fff;
+    
+
+}
+.nav{
+    display: flex;
+}
 .nav a{
- 
+    
+    height: 60px;
     display:inline-block;
-    padding: 5px 10px;
+    padding: 0px  10px;
+
+}
+
+.nav a:hover{
+    font-size: 23px ;
+    background-color: #fff;
 
 }
 
@@ -146,4 +168,52 @@ font-family: inherit;
     border: 1px solid rgb(18, 134, 57);
     font-size: 1.2rem;
     color:rgb(18, 134, 57);
+}
+
+.imgcontainer{
+    width: 50%;
+    margin-left: auto;
+    top: 50%;
+    left: 50%;
+    overflow: hidden;
+    
+    
+   
+}
+
+.wrapper{
+    width: 100%;
+    display: flex;
+    animation: slide 10s infinite;
+}
+
+img{
+    width: 100%;
+}
+
+@keyframes slide{
+    0%{
+        transform: translateX(0);
+    }
+    25%{
+        transform: translateX(0);
+    }
+    30%{
+        transform: translateX(-100%);
+    }
+    50%{
+        transform: translateX(-100%);
+    }
+    55%{
+        transform: translateX(-200%);
+    }
+    75%{
+        transform: translateX(-200%);
+    }
+    80%{
+        transform: translateX(-300%);
+    }
+    100%{
+        transform: translateX(-300%);
+    }
 }

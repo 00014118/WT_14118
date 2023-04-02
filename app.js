@@ -2,6 +2,7 @@ const express = require ('express')
 const app = express()
 
 const fs = require('fs')
+const { stringify } = require('querystring')
 
 
 
@@ -77,6 +78,23 @@ app.get('/notes/:id', (req, res) => {
     
 })
 
+app.get ('/:id/delete' , (req, res) => {
+    const id= req.params.id
+
+    fs.readFile('./data/notes.json', (err, data) => {
+        if (err) throw err
+
+        const notes = JSON.parse(data)
+
+        const filterednotes = notes.filter(note => note.id != id)
+
+        fs.writeFile('./data/notes.json' , JSON.stringify(filterednotes), (err) => { 
+            if (err) throw err
+
+            res.render('notes', {notes: filterednotes , deleted: true })
+        })
+    })
+})
 
 
 app.listen(8000, err => {
@@ -88,3 +106,5 @@ app.listen(8000, err => {
 function id () {
     return'_' + Math.random().toString(36).substring(2, 9);
 }
+
+app.use('/images', express.static(process.cwd() + '/images'));
