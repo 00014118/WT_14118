@@ -53,4 +53,5 @@ node app
         home.pug
         layout.pug
         notes.pug
+        edit.pug
 ```

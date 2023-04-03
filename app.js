@@ -11,11 +11,12 @@ app.set('view engine' , 'pug')
 app.use('/static', express.static('public'))
 app.use(express.urlencoded({ extended: false }))
 
-//localhost 
+//Home page
 app.get('/', (req, res) => {
     res.render('home')
 })
 
+//CREATE and PUSH and ARCHIVE>>
 app.get ('/create',(req, res) =>
 {
     res.render('create')})
@@ -72,7 +73,7 @@ app.post ('/create', (req, res) => {
 }) 
 
 
-    
+   //Blog list page>> 
 app.get('/notes', (req, res) => {
 
     fs.readFile('./data/notes.json', (err, data) => {
@@ -86,7 +87,7 @@ app.get('/notes', (req, res) => {
     
 })
 
-//archive viewer
+//Archive
 
 app.get('/archives', (req, res) => {
 
@@ -117,6 +118,7 @@ app.get('/archives/:id', (req, res) => {
     
 })
 
+//Archive by unique Id
 app.get ('/:id/open' , (req, res) => {
     const id= req.params.id
 
@@ -133,7 +135,7 @@ app.get ('/:id/open' , (req, res) => {
 
 
 
-
+//Blog by unique Id
 app.get('/notes/:id', (req, res) => {
     const id = req.params.id
 
@@ -149,6 +151,8 @@ app.get('/notes/:id', (req, res) => {
 
     
 })
+
+//DELETE
 
 app.get ('/:id/delete' , (req, res) => {
     const id= req.params.id
@@ -167,6 +171,54 @@ app.get ('/:id/delete' , (req, res) => {
         })
     })
 })
+
+
+
+// UPDATE (SHOW UPDATE FORM)
+app.get('/notes/:id/update', (req, res) => {
+    const id= req.params.id
+  
+
+  
+    fs.readFile('./data/notes.json', (err, data) => {
+        if (err) throw err
+  
+        const notes = JSON.parse(data)
+  
+        const note = notes.find(note => note.id == id)
+  
+        res.render('edit', { note: note })
+    })
+  })
+  
+  
+  
+  // UPDATE (PERFORM UPDATE OP)
+  app.post('/notes/:id/update', (req, res) => {
+    const id= req.params.id
+  
+    fs.readFile('./data/notes.json', (err, data) => {
+        if (err) throw err
+  
+        const notes = JSON.parse(data)
+  
+        const note = notes.find(note => note.id == id)
+  
+        let idx = notes.indexOf(note)
+  
+        notes[idx].title = req.body.title
+        notes[idx].content = req.body.content
+  
+        fs.writeFile('./data/notes.json' , JSON.stringify(notes), err => { 
+          if (err) throw err
+  
+          res.redirect('/notes')
+        })
+    })
+  })
+  
+
+
 
 
 app.listen(8000, err => {
