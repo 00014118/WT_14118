@@ -6,7 +6,7 @@ To run this web application locally you must follow the steps indicated bellow:
 
 1. Clone this repositary
 ```bash
-git clone  [link]
+git clone https://github.com/00014118/WT_14118.git
 ```
 
 2. Install dependecies
@@ -25,4 +25,4 @@ node app
  - pug.js
 
 ### Web application repository on github
-[link]
+[link to github repo] (https://github.com/00014118/WT_14118.git)
