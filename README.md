@@ -27,6 +27,7 @@ node app
 ### Web application repository on github
 [Link to github repo](https://github.com/00014118/WT_14118.git)
 
+### Project structure
 ```
 /WT_14118
     app.js
@@ -54,4 +55,3 @@ node app
         layout.pug
         notes.pug
         edit.pug
-```
