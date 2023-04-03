@@ -11,7 +11,7 @@ git clone https://github.com/00014118/WT_14118.git
 
 2. Install dependecies
 ```bash
-cd 14118
+cd WT_14118-master
 npm install
 ```
 
