@@ -40,6 +40,7 @@ node app
         notes.json
 
     /public
+        styles.css
         /images
             first.png
             second.png
