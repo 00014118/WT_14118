@@ -26,3 +26,30 @@ node app
 
 ### Web application repository on github
 [Link to github repo](https://github.com/00014118/WT_14118.git)
+
+
+/WT_14118
+    app.js
+    package.json
+    package-lock.json
+    .gitignore
+
+    /data
+        archives.json
+        notes.json
+
+    /public
+        /images
+            first.png
+            second.png
+            third.png
+            fourth.png
+
+    /views
+        archivedetail.pug
+        archives.pug
+        create.pug
+        detail.pug
+        home.pug
+        layout.pug
+        notes.pug
