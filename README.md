@@ -27,8 +27,8 @@ node app
 ### Web application repository on github
 [Link to github repo](https://github.com/00014118/WT_14118.git)
 
-
-    /WT_14118
+```tree
+/WT_14118
     app.js
     package.json
     package-lock.json
@@ -53,3 +53,4 @@ node app
         home.pug
         layout.pug
         notes.pug
+```
