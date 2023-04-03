@@ -44,7 +44,31 @@ app.post ('/create', (req, res) => {
                 res.render('create', {success :true } )
                 })
             })
+         //the archive
+        fs.readFile('./data/archives.json', (err, data) =>{
+            if (err) throw err
+    
+            const archives =JSON.parse(data)
+    
+            archives.push ({
+                id: id (),
+                title: title,
+                content:content,
+                })
+    
+            fs.writeFile('./data/archives.json', JSON.stringify(archives), err => {
+                if(err) throw err
+    
+                
+                })
+            })
+            
+
+
+        
         }
+
+        
 }) 
 
 
@@ -61,6 +85,54 @@ app.get('/notes', (req, res) => {
     })
     
 })
+
+//archive viewer
+
+app.get('/archives', (req, res) => {
+
+    fs.readFile('./data/archives.json', (err, data) => {
+        if (err) throw err
+
+        const archives = JSON.parse(data)
+
+        res.render('archives', { archives: archives })
+
+    })
+    
+})
+
+app.get('/archives/:id', (req, res) => {
+    const id = req.params.id
+
+    fs.readFile('./data/archives.json', (err, data) => {
+        if (err) throw err
+
+        const archives = JSON.parse(data)
+
+        const archive = archives.filter(archive => archive.id == id)[0]
+
+        res.render('archivedetail', { archive: archive})
+    })
+
+    
+})
+
+app.get ('/:id/open' , (req, res) => {
+    const id= req.params.id
+
+     fs.readFile('./data/archives.json', (err, data) => {
+        if (err) throw err
+
+        const archives = JSON.parse(data)
+
+        const archive = archives.filter(archive => archive.id == id)[0]
+
+        res.render('archivedetail', { archive: archive})
+    })
+})
+
+
+
 
 app.get('/notes/:id', (req, res) => {
     const id = req.params.id

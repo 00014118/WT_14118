@@ -1,0 +1,13 @@
+extends layout.pug 
+
+block content 
+    div.container 
+        h1 All notes 
+
+        if deleted
+            p.success Deleted
+
+        each archive in archives 
+            div.note-wrapper 
+                a.note(href=`/archives/${archive.id}`)  #{archive.title} 
+                a.open(href=`/${archive.id}/open`)  Open note 
